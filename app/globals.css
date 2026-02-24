@@ -84,6 +84,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --animate-ticker-move: ticker 230s linear infinite;
 }
 
 .text-brand-blue { color: var(--brand-blue); }
@@ -140,4 +141,16 @@
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+theme {
+  /* This creates the utility class 'animate-ticker-move' */
+  --animate-ticker-move: ticker 240s linear infinite;
+}
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
