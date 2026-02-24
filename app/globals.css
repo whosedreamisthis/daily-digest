@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --brand-blue: #4A90E2;
+  --brand-orange: #F5A623;
 }
 
 @theme inline {
@@ -10,17 +12,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-brand-blue: #4A90E2;
+  --color-brand-orange: #F5A623;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.text-brand-blue { color: var(--brand-blue); }
+.text-brand-orange { color: var(--brand-orange); }
