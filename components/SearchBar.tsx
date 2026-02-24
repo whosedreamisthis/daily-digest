@@ -2,11 +2,11 @@
 
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
-import { useSearchStore } from '@/stores/useSearchStore';
+import { useNewsStore } from '@/stores/useNewsStore';
 
 export default function SearchBar() {
-	const query = useSearchStore((state) => state.query);
-	const setQuery = useSearchStore((state) => state.setQuery);
+	const query = useNewsStore((state) => state.query);
+	const setQuery = useNewsStore((state) => state.setQuery);
 
 	const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
