@@ -4,10 +4,39 @@ import React, { useEffect, useState } from 'react';
 import { useNewsStore } from '@/stores/useNewsStore';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { summarizeArticle } from '@/lib/ai-actions';
+import ArticleSummary from '@/components/ArticleSummary';
 export default function ArticlePage() {
 	const article = useNewsStore((state) => state.article);
+	const summaries = useNewsStore((state) => state.summaries);
+	const addSummary = useNewsStore((state) => state.addSummary);
+
 	const [isHydrated, setIsHydrated] = useState(false);
+	const [summary, setSummary] = useState<string | null>(null);
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		if (!isHydrated || !article) return;
+
+		// CHECK CACHE FIRST
+		const existingSummary = summaries[article.title];
+
+		if (!existingSummary && !loading) {
+			const getAIResult = async () => {
+				setLoading(true);
+				const text = await summarizeArticle(
+					article.title,
+					article.content || article.description,
+				);
+				addSummary(article.title, text); // SAVE TO CACHE
+				setLoading(false);
+			};
+			getAIResult();
+		}
+	}, [isHydrated, article, summaries, loading, addSummary]);
+
+	// Use either the cached version or the local loading state
+	const currentSummary = article ? summaries[article.title] : null;
 
 	useEffect(() => {
 		setIsHydrated(true);
@@ -47,6 +76,28 @@ export default function ArticlePage() {
 					{article.author && <span>• By {article.author}</span>}
 				</div>
 			</header>
+
+			<section className="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+				<h3 className="font-bold text-slate-800 flex items-center gap-2">
+					✨ AI Summary
+				</h3>
+
+				{loading ? (
+					<div className="space-y-3">
+						<div className="h-4 bg-slate-200 rounded w-3/4 animate-pulse"></div>
+						<div className="h-4 bg-slate-200 rounded w-5/6 animate-pulse"></div>
+						<div className="h-4 bg-slate-200 rounded w-2/3 animate-pulse"></div>
+					</div>
+				) : (
+					<div className="mt-1">
+						{currentSummary ? (
+							<ArticleSummary content={currentSummary} />
+						) : (
+							'Generating summary...'
+						)}
+					</div>
+				)}
+			</section>
 
 			{/* 2. Image Section - Contained correctly */}
 			<div className="relative w-full h-[300px] md:h-[500px] overflow-hidden rounded-2xl shadow-lg">

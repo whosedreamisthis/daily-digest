@@ -1,135 +1,61 @@
-export const mockArticles = [
+import { Article } from '@/lib/types';
+
+export const mockArticles: Article[] = [
 	{
 		source: { id: 'pbs-news', name: 'PBS News' },
 		author: 'Adithi Ramakrishnan',
-		title: 'Scientists finally uncover the secret behind how horses whinny',
+		title:
+			'How horses whinny has long eluded scientists. A new study reveals the answer',
 		description:
-			'A new study reveals the unique vocal mechanics that allow horses to produce their distinct neighs, a mystery that has long eluded researchers.',
-		url: 'https://www.pbs.org/newshour/science',
+			'A new study reveals the unique dual-source vocalization technique that allows horses to produce their distinct neighs.',
+		url:
+			'https://www.pbs.org/newshour/science/how-horses-whinny-has-long-eluded-scientists-a-new-study-reveals-the-answer',
 		urlToImage:
 			'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=800',
-		publishedAt: '2026-02-24T09:48:00Z',
+		publishedAt: '2026-02-24T12:34:00Z',
 		content:
-			'Science Feb 24. How horses whinny has long eluded scientists...',
+			'Horses whinny to find new friends, greet old ones and celebrate happy moments. How exactly they produce that sound has long eluded scientists. [+600 chars]',
 	},
 	{
-		source: { id: 'national-post', name: 'National Post' },
-		author: 'Staff Writer',
+		source: { id: 'cbs-news', name: 'CBS News' },
+		author: 'CBS Staff',
 		title:
-			'Rare planetary parade: Six planets to align in the sky later this month',
+			'Former U.K. ambassador Peter Mandelson arrested weeks after latest Epstein files release',
 		description:
-			"Astronomy enthusiasts are preparing for a rare celestial event as six planets prepare to link up in a 'parade' visible from Earth.",
-		url: 'https://nationalpost.com/news/planetary-parade-2026',
-		urlToImage:
-			'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800',
-		publishedAt: '2026-02-24T00:21:00Z',
-		content: 'Six planets linking up later this month for a parade...',
-	},
-	{
-		source: { id: 'nasa-news', name: 'NASA' },
-		author: 'Dryden Wire',
-		title:
-			'NASA delays Artemis II lunar mission again for urgent rocket repairs',
-		description:
-			'A helium flow issue in the Space Launch System (SLS) has forced NASA to roll the moon rocket back, delaying the crewed lunar flyby until April.',
-		url: 'https://drydenwire.com/news/nasa-artemis-delay',
-		urlToImage:
-			'https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=800',
-		publishedAt: '2026-02-24T03:25:00Z',
-		content:
-			'Engineers encountered a problem with helium flow to the upper stage...',
-	},
-	{
-		source: { id: 'espn', name: 'ESPN' },
-		author: 'John Wawrow',
-		title:
-			'U.S. Women’s Olympic Hockey team declines White House invitation',
-		description:
-			"Following their gold-medal run in Milan, the U.S. women's team has respectfully declined an invitation to the State of the Union address.",
-		url: 'https://www.pbs.org/newshour/nation/olympic-hockey-update',
-		urlToImage:
-			'https://images.unsplash.com/photo-1580748141549-71748ddf0bdc?q=80&w=800',
-		publishedAt: '2026-02-24T08:30:00Z',
-		content:
-			"In a statement, the U.S. women's team said it was sincerely grateful...",
-	},
-	{
-		source: { id: 'tech-news', name: 'Tech Daily' },
-		author: 'Mariam Ibrahim',
-		title:
-			'Robotaxis to arrive in London as black cab drivers raise concerns',
-		description:
-			"Autonomous taxis are set to begin trials on London streets, sparking a debate over the future of the city's iconic black cab industry.",
-		url: 'https://economictimes.indiatimes.com/tech/robotaxis-london',
-		urlToImage:
-			'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800',
-		publishedAt: '2026-02-24T06:30:00Z',
-		content:
-			'Robotaxis set to arrive in London; black cab drivers sceptical...',
-	},
-	{
-		source: { id: 'reuters', name: 'Reuters' },
-		author: 'Michelle Chapman',
-		title: 'FedEx seeks full refund after Trump tariffs are ruled illegal',
-		description:
-			'Following a Supreme Court ruling, FedEx has joined several major U.S. companies in suing for the return of tariff payments.',
-		url: 'https://www.pbs.org/politics/fedex-tariffs',
-		urlToImage:
-			'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800',
-		publishedAt: '2026-02-24T09:10:00Z',
-		content:
-			'FedEx said in a filing that they have suffered injury from the tariffs...',
-	},
-	{
-		source: { id: 'the-guardian', name: 'The Guardian' },
-		author: 'Sammy Westfall',
-		title:
-			'Former U.K. Ambassador arrested in expanding Epstein investigation',
-		description:
-			"Authorities in London have taken a former diplomat into custody following new revelations in the unsealed 'Epstein Files' regarding ties to the late financier.",
-		url: 'https://www.washingtonpost.com/world/epstein-updates',
+			"London's Metropolitan Police arrested the 72-year-old former diplomat on suspicion of misconduct in public office.",
+		url:
+			'https://www.cbsnews.com/news/peter-mandelson-arrested-former-uk-ambassador-to-us-epstein-files/',
 		urlToImage:
 			'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800',
-		publishedAt: '2026-02-24T07:45:00Z',
+		publishedAt: '2026-02-23T16:00:00Z',
 		content:
-			'The Epstein files have brought a wave of resignations and investigations...',
+			'Officers arrested the man in Camden on Monday. This follows search warrants at addresses in Wiltshire and Camden. Mandelson has been released on bail. [+500 chars]',
 	},
 	{
-		source: { id: 'nhl-news', name: 'NHL News' },
-		author: 'Lyle Richardson',
-		title:
-			'Sidney Crosby day-to-day with leg injury after Olympic tournament',
+		source: { id: 'si', name: 'Sports Illustrated' },
+		author: 'Jacob Punturi',
+		title: 'Team USA Women Decline White House Invite',
 		description:
-			'The Penguins captain is trekking back from Italy with a right-leg injury, leaving his status for the NHL season restart in doubt.',
-		url: 'https://www.spectorshockey.net/nhl-headlines',
+			"After capturing gold at the 2026 Winter Olympics in Milan, the U.S. women's hockey team has declined an invitation to the State of the Union address.",
+		url:
+			'https://www.si.com/onsi/breakaway/team-usa-women-decline-white-house-invite',
 		urlToImage:
-			'https://images.unsplash.com/photo-1515703407324-5f753afe809b?q=80&w=800',
-		publishedAt: '2026-02-24T12:00:00Z',
+			'https://images.unsplash.com/photo-1580748141549-71748ddf0bdc?q=80&w=800',
+		publishedAt: '2026-02-23T20:00:00Z',
 		content:
-			'Crosby remains hobbled by a right-leg injury suffered in Italy...',
+			"USA Hockey cited 'timing and previously scheduled academic and professional commitments' as the reason the athletes are unable to participate. [+400 chars]",
 	},
 	{
-		source: { id: 'crypto-daily', name: 'Crypto News' },
-		author: 'J.P. Steiner',
-		title: 'DeepSnitch AI hype causes surge in crypto community markets',
+		source: { id: 'techmeme', name: 'Techmeme' },
+		author: 'Lora Kolodny',
+		title: 'Waymo opens its robotaxi service to 10 US cities',
 		description:
-			"A new wave of AI-driven 'DeepSnitch' tokens has taken the market by storm as traders bet on the convergence of blockchain and AI surveillance.",
-		url: 'https://m.economictimes.com/news/crypto-update',
+			'Waymo is expanding operations to Dallas, Houston, San Antonio, and Orlando, bringing its total footprint to 10 major markets.',
+		url: 'https://www.techmeme.com/260224/p4#a260224p4',
 		urlToImage:
-			'https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=800',
-		publishedAt: '2026-02-24T05:45:00Z',
-		content: 'DeepSnitch AI community hype surges amid market shift...',
-	},
-	{
-		source: { id: 'health-world', name: 'Health World' },
-		author: 'Staff Writer',
-		title: 'International Rare Disease Day 2026 observed globally',
-		description:
-			'Medical communities and advocacy groups are holding events today to raise awareness for the 300 million people living with rare conditions.',
-		url: 'https://economictimes.indiatimes.com/health/rare-disease-day',
-		urlToImage:
-			'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=800',
-		publishedAt: '2026-02-24T11:00:00Z',
-		content: 'International Rare Disease Day 2026 observed at SGPGI...',
+			'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800',
+		publishedAt: '2026-02-24T09:00:00Z',
+		content:
+			"Waymo is opening service to 'select riders' in four new Texas and Florida cities. This marks a significant nationwide expansion for the Alphabet subsidiary. [+550 chars]",
 	},
 ];
