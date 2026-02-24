@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { summarizeArticle } from '@/lib/ai-actions';
 import ArticleSummary from '@/components/ArticleSummary';
+import BackButton from '@/components/BackButton';
 export default function ArticlePage() {
 	const article = useNewsStore((state) => state.article);
 	const summaries = useNewsStore((state) => state.summaries);
@@ -60,6 +61,7 @@ export default function ArticlePage() {
 
 	return (
 		<main className="max-w-4xl mx-auto p-6 space-y-8">
+			<BackButton />
 			{/* 1. Headline Section */}
 			<header className="space-y-4">
 				<h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-900">

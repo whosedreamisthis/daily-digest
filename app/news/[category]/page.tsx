@@ -3,6 +3,7 @@ import { getHeadlines } from '@/app/actions';
 import { Article } from '@/lib/types';
 import { mockArticles } from '@/data/mockNews';
 import NewsCard from '@/components/NewsCard';
+import BackButton from '@/components/BackButton';
 
 export default async function CategoryPage({
 	params,
@@ -23,6 +24,7 @@ export default async function CategoryPage({
 
 	return (
 		<main className="max-w-7xl mx-auto py-8">
+			<BackButton />
 			{/* 1. Header Section */}
 			<header className="px-4 mb-8 border-l-4 border-red-600">
 				<h1 className="text-4xl font-black uppercase tracking-tight">

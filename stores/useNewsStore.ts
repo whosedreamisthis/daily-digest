@@ -2,6 +2,11 @@ import { Article } from '@/lib/types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+interface BreadCrumb {
+	label: string;
+	href: string;
+}
+
 interface NewsState {
 	query: string;
 	article: Article | null;
@@ -9,6 +14,8 @@ interface NewsState {
 	setQuery: (query: string) => void;
 	setArticle: (article: Article) => void;
 	addSummary: (title: string, summary: string) => void;
+	customCrumbs: BreadCrumb[];
+	setCustomCrumbs: (crumbs: BreadCrumb[]) => void;
 }
 
 // Add <NewsState> right here in the function parameters
@@ -24,6 +31,8 @@ export const useNewsStore = create<NewsState>()(
 				set((state) => ({
 					summaries: { ...state.summaries, [title]: summary },
 				})),
+			customCrumbs: [],
+			setCustomCrumbs: (crumbs) => set({ customCrumbs: crumbs }),
 		}),
 		{
 			name: 'news-storage',
