@@ -44,25 +44,48 @@ Type any keyword into the search bar. The app will update the URL in real-time.
 
 ## 📂 Project Structure
 
-```text
-├── app/
-│   ├── (auth)/           # Authentication routes (Login/Signup)
-│   ├── article/[id]/     # Dynamic article detail pages
-│   ├── news/[category]/  # Dynamic category listing
-│   ├── search/           # Search results page
-│   ├── layout.tsx        # Global providers and navigation
-│   └── page.tsx          # Homepage (Featured/Trending news)
-├── components/
-│   ├── ui/               # Base Shadcn/Radix components
-│   ├── NewsCard.tsx      # Main article preview component
-│   ├── SafeImage.tsx     # Image fallback wrapper
-│   └── Pagination.tsx    # Logic for page switching
-├── hooks/                # Custom React hooks (useScroll, etc.)
-├── lib/                  # Utility functions and API clients
-└── stores/               # Zustand state management
-```
+The project follows the Next.js 15 App Router conventions. Below are the key components that power the Daily Digest experience:
 
-## 🧩 Key Component Logic
+````text
+├── components/
+│   ├── ArticleSummary.tsx  # Renders AI-generated summaries using react-markdown
+│   ├── BackButton.tsx      # Client-side navigation with hover animations
+│   ├── BrandSpinner.tsx    # Custom dual-ring loading animation (Daily & Digest)
+│   ├── CategoryBar.tsx     # Horizontal scrollable navigation with drag-to-scroll
+│   ├── HeroArticle.tsx     # Featured full-width article with gradient overlays
+│   ├── NewsCard.tsx        # Responsive article card with line-clamping and badges
+│   ├── NewsTicker.tsx      # Fixed bottom "Breaking News" scrolling banner
+│   ├── Pagination.tsx      # Page navigation logic for categories and search
+│   ├── SafeImage.tsx       # Next.js Image wrapper with Base64 SVG error handling
+│   └── SearchBar.tsx       # URL-synced search input with history management
+├── app/
+│   ├── article/[id]/       # Dynamic article detail pages
+│   ├── news/[category]/    # Server-rendered category news feeds
+│   └── search/             # Keyword-based search results
+├── stores/
+│   └── useNewsStore.ts     # Zustand state for global search queries and article data
+└── lib/
+    ├── utils.ts            # Slug generation and Tailwind formatting helpers
+    └── types.ts            # TypeScript interfaces for NewsAPI responses
+
+## 🧩 Component Highlights
+
+### 1. Drag-to-Scroll Category Bar (`CategoryBar.tsx`)
+To provide a fluid, mobile-like experience on desktop, the `CategoryBar` uses a custom `requestAnimationFrame` implementation. This decouples the event frequency from DOM updates, allowing users to click and drag through news categories smoothly.
+
+```typescript
+const handleMouseMove = (e: React.MouseEvent) => {
+  if (!isDragging || !scrollRef.current) return;
+  e.preventDefault();
+
+  requestAnimationFrame(() => {
+    if (!scrollRef.current) return;
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  });
+};
+---
 
 ### 1. Robust Image Handling (`SafeImage.tsx`)
 
@@ -180,3 +203,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 _Built with ❤️ for a faster, cleaner news experience._
+````
