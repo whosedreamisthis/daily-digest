@@ -13,8 +13,8 @@ export const mockArticles: Article[] = [
 		urlToImage:
 			'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=800',
 		publishedAt: '2026-02-24T12:34:00Z',
-		content:
-			'Horses whinny to find new friends, greet old ones and celebrate happy moments. How exactly they produce that sound has long eluded scientists. [+600 chars]',
+		content: 'Horses whinny to find new friends...',
+		category: 'Science',
 	},
 	{
 		source: { id: 'cbs-news', name: 'CBS News' },
@@ -22,148 +22,148 @@ export const mockArticles: Article[] = [
 		title:
 			'Former U.K. ambassador Peter Mandelson arrested weeks after latest Epstein files release',
 		description:
-			"London's Metropolitan Police arrested the 72-year-old former diplomat on suspicion of misconduct in public office.",
+			"London's Metropolitan Police arrested the 72-year-old former diplomat...",
 		url:
 			'https://www.cbsnews.com/news/peter-mandelson-arrested-former-uk-ambassador-to-us-epstein-files/',
 		urlToImage:
 			'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800',
 		publishedAt: '2026-02-23T16:00:00Z',
-		content:
-			'Officers arrested the man in Camden on Monday. This follows search warrants at addresses in Wiltshire and Camden. Mandelson has been released on bail. [+500 chars]',
+		content: 'Officers arrested the man in Camden on Monday...',
+		category: 'Politics',
 	},
 	{
 		source: { id: 'si', name: 'Sports Illustrated' },
 		author: 'Jacob Punturi',
 		title: 'Team USA Women Decline White House Invite',
 		description:
-			"After capturing gold at the 2026 Winter Olympics in Milan, the U.S. women's hockey team has declined an invitation to the State of the Union address.",
+			'After capturing gold at the 2026 Winter Olympics in Milan...',
 		url:
 			'https://www.si.com/onsi/breakaway/team-usa-women-decline-white-house-invite',
 		urlToImage:
 			'https://images.unsplash.com/photo-1580748141549-71748ddf0bdc?q=80&w=800',
 		publishedAt: '2026-02-23T20:00:00Z',
-		content:
-			"USA Hockey cited 'timing and previously scheduled academic and professional commitments' as the reason the athletes are unable to participate. [+400 chars]",
+		content: "USA Hockey cited 'timing...",
+		category: 'Sports',
 	},
 	{
 		source: { id: 'techmeme', name: 'Techmeme' },
 		author: 'Lora Kolodny',
 		title: 'Waymo opens its robotaxi service to 10 US cities',
 		description:
-			'Waymo is expanding operations to Dallas, Houston, San Antonio, and Orlando, bringing its total footprint to 10 major markets.',
+			'Waymo is expanding operations to Dallas, Houston, San Antonio, and Orlando...',
 		url: 'https://www.techmeme.com/260224/p4#a260224p4',
 		urlToImage:
 			'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=800',
 		publishedAt: '2026-02-24T09:00:00Z',
-		content:
-			"Waymo is opening service to 'select riders' in four new Texas and Florida cities. This marks a significant nationwide expansion for the Alphabet subsidiary. [+550 chars]",
+		content: 'Waymo is opening service...',
+		category: 'Technology',
 	},
 	{
 		source: { id: 'reuters', name: 'Reuters' },
 		author: 'Nikunj Ohri',
 		title: 'Global Markets Rally as Inflation Hits 2-Year Low',
 		description:
-			'Stock indices across Europe and Asia saw a 2% jump today after new data suggested central banks might ease interest rates.',
+			'Stock indices across Europe and Asia saw a 2% jump today...',
 		url:
 			'https://www.reuters.com/business/markets-rally-inflation-data-2026-02-24/',
 		urlToImage:
 			'https://images.unsplash.com/photo-1611974717482-4828c3fc3b8c?q=80&w=800',
 		publishedAt: '2026-02-24T10:15:00Z',
-		content:
-			'Economists are optimistic as the latest figures show consumer price indexes cooling faster than anticipated in major economies. [+800 chars]',
+		content: 'Economists are optimistic...',
+		category: 'Business',
 	},
 	{
 		source: { id: 'the-verge', name: 'The Verge' },
 		author: 'Andrew J. Hawkins',
 		title: 'Apple Reveals "Glass Air" Augmented Reality Headset',
 		description:
-			'Apple has finally announced its long-rumored lightweight AR glasses, promising a seamless transition between reality and digital overlays.',
+			'Apple has finally announced its long-rumored lightweight AR glasses...',
 		url: 'https://www.theverge.com/2026/2/24/apple-glass-air-announcement',
 		urlToImage:
 			'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=800',
 		publishedAt: '2026-02-24T08:00:00Z',
-		content:
-			'The Glass Air headset weighs only 75 grams and features a new "OpticSync" technology that eliminates motion sickness. [+1200 chars]',
+		content: 'The Glass Air headset...',
+		category: 'Technology',
 	},
 	{
 		source: { id: 'nat-geo', name: 'National Geographic' },
 		author: 'Sarah Gibbens',
 		title: 'New Species of Deep-Sea Octopus Found in Mariana Trench',
 		description:
-			'Marine biologists have captured footage of a "ghost-like" octopus living at depths previously thought to be uninhabitable.',
+			'Marine biologists have captured footage of a "ghost-like" octopus...',
 		url:
 			'https://www.nationalgeographic.com/science/article/new-deep-sea-octopus-2026',
 		urlToImage:
 			'https://images.unsplash.com/photo-1545331506-6248558b8a06?q=80&w=800',
 		publishedAt: '2026-02-23T14:20:00Z',
-		content:
-			'The creature, nicknamed the "Pearl Octopus" for its iridescent skin, was found at a depth of nearly 11,000 meters. [+950 chars]',
+		content: 'The creature, nicknamed...',
+		category: 'Science',
 	},
 	{
 		source: { id: 'espn', name: 'ESPN' },
 		author: 'Jeff Passan',
 		title: 'MLB Implements Fully Automated Strike Zone for 2026 Season',
 		description:
-			'Major League Baseball announced that "Robot Umpires" will handle balls and strikes in every stadium starting this Opening Day.',
+			'Major League Baseball announced that "Robot Umpires" will handle balls...',
 		url: 'https://www.espn.com/mlb/story/_/id/automated-strike-zone-2026',
 		urlToImage:
 			'https://images.unsplash.com/photo-1508344928928-7165b67de128?q=80&w=800',
 		publishedAt: '2026-02-24T11:45:00Z',
-		content:
-			'The decision comes after a successful three-year trial in the Triple-A minor leagues, aimed at increasing accuracy. [+700 chars]',
+		content: 'The decision comes...',
+		category: 'Sports',
 	},
 	{
 		source: { id: 'bbc-news', name: 'BBC News' },
 		author: 'Katya Adler',
 		title: 'EU Proposes Universal Basic Income Pilot for Member States',
 		description:
-			'A new legislative framework aims to test UBI in selected regions to combat displacement caused by AI automation.',
+			'A new legislative framework aims to test UBI in selected regions...',
 		url: 'https://www.bbc.com/news/world-europe-684201',
 		urlToImage:
 			'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=800',
 		publishedAt: '2026-02-24T07:30:00Z',
-		content:
-			'The European Commission stated that the pilot would involve over 500,000 citizens across five different countries. [+1100 chars]',
+		content: 'The European Commission...',
+		category: 'World',
 	},
 	{
 		source: { id: 'wired', name: 'Wired' },
 		author: 'Lauren Goode',
 		title: 'The End of Passwords? Biometric Implants Gain Popularity',
 		description:
-			'A growing number of tech enthusiasts are opting for sub-dermal chips that handle everything from payments to home security.',
+			'A growing number of tech enthusiasts are opting for sub-dermal chips...',
 		url: 'https://www.wired.com/story/biometric-implants-2026/',
 		urlToImage:
 			'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800',
 		publishedAt: '2026-02-23T19:10:00Z',
-		content:
-			'While security experts warn of privacy risks, the convenience of never carrying keys or wallets is proving irresistible. [+850 chars]',
+		content: 'While security experts...',
+		category: 'Technology',
 	},
 	{
 		source: { id: 'the-guardian', name: 'The Guardian' },
 		author: 'Oliver Holmes',
 		title: 'Sahara Forest Project Reaches Massive Reforestation Milestone',
 		description:
-			'By using saltwater-cooled greenhouses, a vast area of the desert has been successfully turned into productive farmland.',
+			'By using saltwater-cooled greenhouses, a vast area of the desert...',
 		url:
 			'https://www.theguardian.com/environment/2026/feb/sahara-forest-milestone',
 		urlToImage:
 			'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800',
 		publishedAt: '2026-02-24T13:00:00Z',
-		content:
-			'The project now provides enough food and water for over 200,000 people in formerly arid regions. [+900 chars]',
+		content: 'The project now...',
+		category: 'Science',
 	},
 	{
 		source: { id: 'variety', name: 'Variety' },
 		author: 'Cynthia Littleton',
 		title: 'James Cameron Announces "Avatar 4" Filming is Complete',
 		description:
-			'The director confirmed that the fourth installment in the Pandora saga has wrapped principal photography ahead of its 2026 release.',
+			'The director confirmed that the fourth installment in the Pandora saga...',
 		url: 'https://variety.com/2026/film/news/james-cameron-avatar-4-wrap',
 		urlToImage:
 			'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800',
 		publishedAt: '2026-02-22T21:45:00Z',
-		content:
-			'Cameron teased that the new film will introduce a "volcanic tribe" of Na\'vi that will challenge the Omatikaya. [+600 chars]',
+		content: 'Cameron teased...',
+		category: 'Entertainment',
 	},
 	{
 		source: { id: 'space-com', name: 'Space.com' },
@@ -171,108 +171,107 @@ export const mockArticles: Article[] = [
 		title:
 			'NASA’s Artemis V Mission Successfully Lands on Lunar South Pole',
 		description:
-			'Astronauts have begun establishing the first permanent lunar habitat in the search for water ice.',
+			'Astronauts have begun establishing the first permanent lunar habitat...',
 		url: 'https://www.space.com/artemis-v-moon-landing-success-2026',
 		urlToImage:
 			'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800',
 		publishedAt: '2026-02-24T04:20:00Z',
-		content:
-			'The mission marks the longest duration humans have spent on the moon since the Apollo era. [+1300 chars]',
+		content: 'The mission marks...',
+		category: 'Science',
 	},
 	{
 		source: { id: 'bloomberg', name: 'Bloomberg' },
 		author: 'Zeke Faux',
 		title: 'Bitcoin Hits $150k as Institutional Adoption Surges',
 		description:
-			'The world’s largest cryptocurrency reached a new all-time high today as major banks integrate crypto-custody services.',
+			'The world’s largest cryptocurrency reached a new all-time high today...',
 		url:
 			'https://www.bloomberg.com/news/articles/2026-02-24/bitcoin-new-high-150k',
 		urlToImage:
 			'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=800',
 		publishedAt: '2026-02-24T06:50:00Z',
-		content:
-			'Analysts suggest that the approval of crypto-pension funds in the US has been a primary driver of the latest rally. [+750 chars]',
+		content: 'Analysts suggest...',
+		category: 'Business',
 	},
 	{
 		source: { id: 'al-jazeera', name: 'Al Jazeera' },
 		author: 'Usaid Siddiqui',
 		title: 'New Peace Treaty Signed in East Africa Summit',
 		description:
-			'Leaders from five nations have signed a historic agreement to share water resources and end decades of border disputes.',
+			'Leaders from five nations have signed a historic agreement...',
 		url:
 			'https://www.aljazeera.com/news/2026/2/24/east-africa-peace-treaty',
 		urlToImage:
 			'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=800',
 		publishedAt: '2026-02-24T09:30:00Z',
-		content:
-			'The "Nairobi Accord" is being hailed as a blueprint for diplomatic solutions to climate-induced conflict. [+1000 chars]',
+		content: 'The "Nairobi Accord"...',
+		category: 'World',
 	},
 	{
 		source: { id: 'rolling-stone', name: 'Rolling Stone' },
 		author: 'Rob Sheffield',
 		title: 'Daft Punk Reunites for "One Last Ride" Virtual Tour',
 		description:
-			'The legendary duo will return as hyper-realistic avatars for a global VR concert experience.',
+			'The legendary duo will return as hyper-realistic avatars...',
 		url:
 			'https://www.rollingstone.com/music/news/daft-punk-reunion-virtual-tour-2026',
 		urlToImage:
 			'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800',
 		publishedAt: '2026-02-23T18:00:00Z',
-		content:
-			'The tour will allow fans to experience a 360-degree interactive "pyramid" stage from their own homes. [+800 chars]',
+		content: 'The tour will...',
+		category: 'Entertainment',
 	},
 	{
 		source: { id: 'scientific-american', name: 'Scientific American' },
 		author: 'Tanya Lewis',
 		title: 'First Successful Lab-Grown Heart Transplant Performed',
 		description:
-			"Surgeons in Switzerland have successfully transplanted a heart grown from the patient's own stem cells.",
+			'Surgeons in Switzerland have successfully transplanted a heart...',
 		url:
 			'https://www.scientificamerican.com/article/first-lab-grown-heart-transplant-2026',
 		urlToImage:
 			'https://images.unsplash.com/photo-1576086213369-97a306dca664?q=80&w=800',
 		publishedAt: '2026-02-24T14:15:00Z',
-		content:
-			'This breakthrough could potentially eliminate organ donor waitlists and the risk of transplant rejection. [+1400 chars]',
+		content: 'This breakthrough...',
+		category: 'Science',
 	},
 	{
 		source: { id: 'the-atlantic', name: 'The Atlantic' },
 		author: 'Derek Thompson',
 		title: 'The "Four-Day Work Week" is Now the Global Standard',
 		description:
-			'Two years after the massive 2024 trials, productivity data shows that shorter weeks have actually boosted GDP.',
+			'Two years after the massive 2024 trials, productivity data shows...',
 		url:
 			'https://www.theatlantic.com/ideas/archive/2026/02/four-day-work-week-success',
 		urlToImage:
 			'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=800',
 		publishedAt: '2026-02-24T11:00:00Z',
-		content:
-			'Companies are reporting higher employee retention and lower burnout rates across nearly every sector. [+950 chars]',
+		content: 'Companies are reporting...',
+		category: 'Business',
 	},
 	{
 		source: { id: 'hbr', name: 'Harvard Business Review' },
 		author: 'Amy Bernstein',
 		title: 'Managing the AI-Human Hybrid Workforce',
-		description:
-			'As AI agents take over middle management roles, leaders must focus on "human-centric" empathy and strategy.',
+		description: 'As AI agents take over middle management roles...',
 		url: 'https://hbr.org/2026/02/managing-ai-human-hybrid-workforce',
 		urlToImage:
 			'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800',
 		publishedAt: '2026-02-23T15:45:00Z',
-		content:
-			'The new corporate structure favors those who can bridge the gap between algorithmic output and human team needs. [+1150 chars]',
+		content: 'The new corporate...',
+		category: 'Technology',
 	},
 	{
 		source: { id: 'vogue', name: 'Vogue' },
 		author: 'Nicole Phelps',
 		title: 'Digital-Only Fashion Week: Why Physical Runways are Fading',
 		description:
-			'High-fashion brands are shifting budgets toward ultra-detailed 3D clothing for the "Meta-Economy."',
+			'High-fashion brands are shifting budgets toward ultra-detailed 3D clothing...',
 		url: 'https://www.vogue.com/article/digital-only-fashion-week-2026',
 		urlToImage:
 			'https://images.unsplash.com/photo-1523381235312-df591785982c?q=80&w=800',
 		publishedAt: '2026-02-24T10:00:00Z',
-		content:
-			'Consumers are now spending more on their digital wardrobes than their physical ones, leading to a massive industry shift. [+900 chars]',
+		content: 'Consumers are now...',
+		category: 'Entertainment',
 	},
 ];
