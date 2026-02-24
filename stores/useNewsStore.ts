@@ -1,5 +1,6 @@
 import { Article } from '@/lib/types';
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 interface NewsState {
 	query: string;
@@ -8,15 +9,17 @@ interface NewsState {
 	setArticle: (article: Article) => void;
 }
 
-export const useNewsStore = create<NewsState>((set) => ({
-	query: '',
-	article: null,
-	setQuery: (query) =>
-		set({
-			query,
+// Add <NewsState> right here in the function parameters
+export const useNewsStore = create<NewsState>()(
+	persist(
+		(set) => ({
+			query: '',
+			article: null,
+			setQuery: (query) => set({ query }),
+			setArticle: (article) => set({ article }),
 		}),
-	setArticle: (article) =>
-		set({
-			article,
-		}),
-}));
+		{
+			name: 'news-storage',
+		},
+	),
+);
