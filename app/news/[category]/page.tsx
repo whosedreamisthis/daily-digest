@@ -1,29 +1,69 @@
+// app/news/[category]/page.tsx
 import React from 'react';
 import { getHeadlines } from '@/app/actions';
 import { Article } from '@/lib/types';
 import { mockArticles } from '@/data/mockNews';
 import NewsCard from '@/components/NewsCard';
+import Pagination from '@/components/Pagination'; // We'll build this next
 import BackButton from '@/components/BackButton';
 
+const ARTICLES_PER_PAGE = 3;
+
+// app/news/[category]/page.tsx
 export default async function CategoryPage({
 	params,
+	searchParams,
 }: {
 	params: Promise<{ category: string }>;
+	searchParams: Promise<{ page?: string }>;
 }) {
 	const { category } = await params;
+	const { page } = await searchParams;
+	const currentPage = Number(page) || 1;
+
 	let articles: Article[];
+	let totalResults = 0;
 
 	if (process.env.NODE_ENV === 'development') {
-		articles = mockArticles.filter(
-			(article) =>
-				article.category?.toLowerCase() === category.toLowerCase(),
+		// For mock data, we still have to slice manually since it's a local array
+		const filtered = mockArticles.filter(
+			(a) => a.category?.toLowerCase() === category.toLowerCase(),
 		);
+
+		totalResults = filtered.length;
+
+		// Calculate dynamic start and end
+		const start = (currentPage - 1) * ARTICLES_PER_PAGE; // (2-1) * 3 = 3
+		const end = start + ARTICLES_PER_PAGE; // 3 + 3 = 6
+
+		// This will now correctly grab index 3 and 4
+		articles = filtered.slice(start, end);
+
+		console.log({
+			urlCategory: category,
+			totalInMock: mockArticles.length,
+			filteredCount: filtered.length, // If this is 0, your mock data needs 'category' fields
+			currentPage: currentPage,
+			sliceStart: (currentPage - 1) * ARTICLES_PER_PAGE,
+			start: start,
+			end: end,
+			articlesLength: articles.length,
+		});
 	} else {
-		articles = await getHeadlines(category.toLowerCase());
+		// FOR REAL DATA: We only fetch 6 items total!
+		const data = await getHeadlines(
+			category.toLowerCase(),
+			currentPage,
+			ARTICLES_PER_PAGE,
+		);
+		articles = data.articles;
+		totalResults = data.totalResults;
 	}
 
+	const totalPages = Math.ceil(totalResults / ARTICLES_PER_PAGE);
+
 	return (
-		<main className="max-w-7xl mx-auto py-8">
+		<main className="max-w-7xl mx-auto py-8 px-4">
 			<BackButton />
 			{/* 1. Header Section */}
 			<header className="px-4 mb-8 border-l-4 border-red-600">
@@ -54,13 +94,12 @@ export default async function CategoryPage({
 				</div>
 			)}
 
-			{/* 3. Potential Pagination/Load More area */}
-			{articles.length > 0 && (
-				<div className="flex justify-center mt-12">
-					<button className="px-6 py-2 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors">
-						Load More
-					</button>
-				</div>
+			{totalPages && (
+				<Pagination
+					currentPage={currentPage}
+					totalPages={totalPages}
+					category={category}
+				/>
 			)}
 		</main>
 	);
