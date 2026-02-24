@@ -1,7 +1,6 @@
 'use client';
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import { useSearchStore } from '@/stores/useSearchStore';
 
 const CATEGORIES = [
 	'business',
@@ -18,8 +17,6 @@ export default function CategoryBar() {
 	const [isDragging, setIsDragging] = useState(false);
 	const [startX, setStartX] = useState(0);
 	const [scrollLeft, setScrollLeft] = useState(0);
-	const selectedCategory = useSearchStore((state) => state.category);
-	const setCategory = useSearchStore((state) => state.setCategory);
 
 	const handleMouseDown = (e: React.MouseEvent) => {
 		if (!scrollRef.current) return;
@@ -58,20 +55,12 @@ export default function CategoryBar() {
       `}
 		>
 			{CATEGORIES.map((cat) => {
-				const isActive = cat === selectedCategory;
 				return (
 					<Link
 						href={`/news/${cat}`}
 						aria-label={`Select Category ${cat}`}
 						key={cat}
-						className={`whitespace-nowrap px-4 py-1 rounded-md border   text-sm hover:border-cyan-500 transition-colors ${
-							isActive
-								? 'text-slate-900 bg-white border-slate-700 hover:bg-white'
-								: 'bg-slate-900 text-white'
-						}`}
-						onClick={() => {
-							setCategory(cat);
-						}}
+						className={`whitespace-nowrap px-4 py-1 rounded-md border   text-sm hover:border-cyan-500 transition-colors ${'bg-slate-900 text-white hover:bg-white active:bg-white active:text-slate-900 hover:text-slate-900'}`}
 					>
 						{cat}
 					</Link>
