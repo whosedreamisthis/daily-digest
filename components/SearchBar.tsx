@@ -3,20 +3,22 @@
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import { useNewsStore } from '@/stores/useNewsStore';
-import { useRouter } from 'next/navigation'; // Don't forget this import!
+import { useRouter, usePathname } from 'next/navigation'; // 1. Import usePathname
 
 export default function SearchBar() {
 	const router = useRouter();
+	const pathname = usePathname(); // 2. Initialize the hook
 	const query = useNewsStore((state) => state.query);
 	const setQuery = useNewsStore((state) => state.setQuery);
 
 	const handleSearch = (e: React.FormEvent) => {
 		e.preventDefault();
+		if (!query.trim()) return;
+
 		const url = `/search?q=${encodeURIComponent(query)}`;
 
-		// If we are ALREADY on the search page, use replace to avoid history bloat.
-		// If we are on Home/Category, use push to create a new history entry.
-		if (window.location.pathname === '/search') {
+		// 3. Use the hook-provided pathname instead of window
+		if (pathname === '/search') {
 			router.replace(url);
 		} else {
 			router.push(url);
