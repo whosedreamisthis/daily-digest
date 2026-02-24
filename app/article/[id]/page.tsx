@@ -26,8 +26,9 @@ export default function ArticlePage() {
 			const getAIResult = async () => {
 				setLoading(true);
 				const text = await summarizeArticle(
+					article.url,
 					article.title,
-					article.content || article.description,
+					article.content,
 				);
 				addSummary(article.title, text); // SAVE TO CACHE
 				setLoading(false);
