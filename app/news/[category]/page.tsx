@@ -6,8 +6,24 @@ import { mockArticles } from '@/data/mockNews';
 import NewsCard from '@/components/NewsCard';
 import Pagination from '@/components/Pagination'; // We'll build this next
 import BackButton from '@/components/BackButton';
+import { Metadata } from 'next';
 
-const ARTICLES_PER_PAGE = 3;
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ category: string }>;
+}) {
+	const { category } = await params;
+
+	return {
+		title: `${
+			category.charAt(0).toUpperCase() + category.slice(1)
+		} News | Global Dispatch`,
+		description: `Read the latest breaking stories in ${category}.`,
+	};
+}
+
+const ARTICLES_PER_PAGE = 6;
 
 // app/news/[category]/page.tsx
 export default async function CategoryPage({
