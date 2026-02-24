@@ -4,14 +4,14 @@ import SearchBar from './SearchBar';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import CategoryBar from './CategoryBar';
-export default function TopNav() {
+export default function Ticker() {
 	const pathname = usePathname();
 	const isHomepage = pathname === '/';
+	if (!isHomepage) return <div></div>;
 	return (
-		<header className="sticky top-0 z-50 bg-white/95">
+		<header className="sticky bottom-0 z-50 bg-white/95">
 			<div>
-				<div className="flex items-center justify-between gap-5">
+				<div className="flex items-center justify-between">
 					<Link href="/">
 						<nav className="flex flex-row just-start items-center">
 							<Image
@@ -30,7 +30,6 @@ export default function TopNav() {
 					</Link>
 					<div className="mr-5">{isHomepage && <SearchBar />}</div>
 				</div>
-				{isHomepage && <CategoryBar />}
 			</div>
 		</header>
 	);

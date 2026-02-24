@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import './globals.css';
 import TopNav from '@/components/TopNav';
+import Ticker from '@/components/Ticker';
 
 export const metadata: Metadata = {
 	title: 'Daily Digest',
@@ -24,6 +25,7 @@ export default function RootLayout({
 			<body>
 				<TopNav />
 				{children}
+				<Ticker />
 			</body>
 		</html>
 	);
