@@ -3,7 +3,7 @@ const BASE_URL = 'https://newsapi.org/v2';
 
 export async function getHeadlines(category = 'general') {
 	const res = await fetch(
-		`${BASE_URL}/top-headlines?country=us&category=${category}`,
+		`${BASE_URL}/top-headlines?country=us&category=${category.toLowerCase()}`,
 		{
 			headers: {
 				Authorization: `Bearer ${API_KEY}`,
