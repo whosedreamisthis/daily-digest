@@ -13,7 +13,12 @@ export default function Pagination({
 	totalPages,
 	category,
 }: Props) {
-	const getPageLink = (page: number) => `/news/${category}?page=${page}`;
+	const getPageLink = (page: number) => {
+		if (category.startsWith('search')) {
+			return `/${category}&page=${page}`;
+		}
+		return `/news/${category}?page=${page}`;
+	};
 
 	return (
 		<div className="flex justify-center items-center gap-4 mt-12">

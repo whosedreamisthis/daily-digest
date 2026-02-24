@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import SafeImage from './SafeImage';
 
 export default function NewsCard({ article }: { article: any }) {
 	return (
@@ -13,7 +14,7 @@ export default function NewsCard({ article }: { article: any }) {
 			<Card className="p-0 overflow-hidden border-none shadow-sm group flex flex-col h-full hover:shadow-md transition-shadow">
 				{/* 2. Direct child of Card, no padding, no margin */}
 				<div className="relative aspect-video w-full">
-					<Image
+					<SafeImage
 						src={article.urlToImage || '/placeholder.jpg'}
 						alt={article.title}
 						fill

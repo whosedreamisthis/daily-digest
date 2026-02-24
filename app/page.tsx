@@ -4,20 +4,21 @@ import HeroArticle from '@/components/HeroArticle';
 import { getHeadlines } from './actions';
 import { mockArticles } from '@/data/mockNews';
 import NewsCard from '@/components/NewsCard';
+import { Article } from '@/lib/types';
 
 export default async function Home() {
-	let result: Article[];
+	let articles: Article[];
 	if (process.env.NODE_ENV === 'development') {
 		console.log('🛠️ Using Mock Data (Saving Quota!)');
-		result = mockArticles;
+		articles = mockArticles;
 	} else {
-		result = await getHeadlines();
+		const result = await getHeadlines('general', 1, 10);
+		articles = result.articles;
 	}
 
-	const featuredArticle = result[0];
-	const remainingArticles = result.slice(1);
+	const featuredArticle = articles[0];
+	const remainingArticles = articles.slice(1);
 
-	console.log(result);
 	return (
 		<>
 			<HeroArticle article={featuredArticle} />

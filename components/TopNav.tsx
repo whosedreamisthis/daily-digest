@@ -8,6 +8,7 @@ import CategoryBar from './CategoryBar';
 export default function TopNav() {
 	const pathname = usePathname();
 	const isHomepage = pathname === '/';
+	const isSearchPage = pathname.includes('search');
 	return (
 		<header className="sticky top-0 z-50 bg-white/95">
 			<div>
@@ -28,7 +29,9 @@ export default function TopNav() {
 							</span>
 						</nav>
 					</Link>
-					<div className="mr-5">{isHomepage && <SearchBar />}</div>
+					<div className="mr-5">
+						{(isHomepage || isSearchPage) && <SearchBar />}
+					</div>
 				</div>
 				{isHomepage && <CategoryBar />}
 			</div>
