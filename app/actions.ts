@@ -24,3 +24,30 @@ export async function getHeadlines(
 		totalResults: data.totalResults, // We need this to calculate total pages
 	};
 }
+
+export async function searchNews(
+	query: string,
+	page: number = 1,
+	pageSize: number = 12,
+) {
+	if (!query) return { articles: [], totalResults: 0 };
+
+	const response = await fetch(
+		`${BASE_URL}/everything?q=${encodeURIComponent(
+			query,
+		)}&page=${page}&pageSize=${pageSize}&apiKey=${API_KEY}`,
+		{ next: { revalidate: 3600 } },
+	);
+
+	const data = await response.json();
+
+	if (data.status !== 'ok') {
+		console.error('NewsAPI Error:', data.message);
+		return { articles: [], totalResults: 0 };
+	}
+
+	return {
+		articles: (data.articles as Article[]) || [],
+		totalResults: data.totalResults || 0,
+	};
+}

@@ -1,27 +1,24 @@
-// app/search/page.tsx
-import React from 'react';
-import { Article } from '@/lib/types';
 import { mockArticles } from '@/data/mockNews';
+import { searchNews } from '@/app/actions';
 import NewsCard from '@/components/NewsCard';
 import Pagination from '@/components/Pagination';
-import BackButton from '@/components/BackButton';
-
-const ARTICLES_PER_PAGE = 6;
 
 export default async function SearchPage({
 	searchParams,
 }: {
 	searchParams: Promise<{ q?: string; page?: string }>;
 }) {
-	const { q, page } = await searchParams;
-	const query = q || '';
-	const currentPage = Number(page) || 1;
+	const params = await searchParams;
+	const query = params.q || '';
+	const currentPage = Number(params.page) || 1;
+	const ARTICLES_PER_PAGE = 12;
 
-	let results: Article[] = [];
+	let results = [];
 	let totalResults = 0;
 
-	// 1. Filtering Logic
+	// 1. Environment-based Logic
 	if (process.env.NODE_ENV === 'development') {
+		// Local Filtering Logic
 		const allMatches = mockArticles.filter(
 			(article) =>
 				article.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -34,54 +31,47 @@ export default async function SearchPage({
 		const start = (currentPage - 1) * ARTICLES_PER_PAGE;
 		results = allMatches.slice(start, start + ARTICLES_PER_PAGE);
 	} else {
-		// In production, call your API's search endpoint (e.g., /everything?q=...)
-		// const data = await searchNews(query, currentPage);
-		// results = data.articles;
-		// totalResults = data.totalResults;
+		// 2. Production API Logic (Server Action)
+		const data = await searchNews(query, currentPage, ARTICLES_PER_PAGE);
+		results = data.articles;
+		totalResults = data.totalResults;
 	}
 
 	const totalPages = Math.ceil(totalResults / ARTICLES_PER_PAGE);
 
 	return (
-		<main className="max-w-7xl mx-auto py-8 px-4">
-			<BackButton />
-
-			<header className="mb-10">
-				<h1 className="text-3xl font-bold">
-					{query ? `Results for "${query}"` : 'Search News'}
-				</h1>
-				<p className="text-slate-500 mt-2">
-					{totalResults} stories found
-				</p>
-			</header>
+		<main className="container mx-auto px-4 py-8">
+			<h1 className="text-2xl font-bold mb-6">
+				Results for "{query}"
+				<span className="text-slate-400 ml-2 text-lg font-normal italic">
+					({totalResults} stories found{' '}
+					{process.env.NODE_ENV === 'development' && '- Dev Mode'})
+				</span>
+			</h1>
 
 			{results.length > 0 ? (
 				<>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-						{results.map((article) => (
-							<NewsCard key={article.title} article={article} />
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{results.map((article, idx) => (
+							<NewsCard
+								key={`${article.url}-${idx}`}
+								article={article}
+							/>
 						))}
 					</div>
 
 					{totalPages > 1 && (
-						<div className="mt-12">
-							{/* Note: We pass 'search' as the category to help the Pagination builder */}
-							<Pagination
-								currentPage={currentPage}
-								totalPages={totalPages}
-								category={`search?q=${query}`}
-							/>
-						</div>
+						<Pagination
+							currentPage={currentPage}
+							totalPages={totalPages}
+							category={`search?q=${query}`}
+						/>
 					)}
 				</>
 			) : (
-				<div className="text-center py-20 bg-slate-50 rounded-xl border-2 border-dashed">
-					<h2 className="text-xl font-medium text-slate-600">
-						No matches found.
-					</h2>
-					<p className="text-slate-400">
-						Try searching for broader keywords like "Tech" or
-						"World".
+				<div className="text-center py-20">
+					<p className="text-slate-500 text-lg">
+						No matches found for "{query}".
 					</p>
 				</div>
 			)}
