@@ -94,8 +94,12 @@ export default async function CategoryPage({
 			{/* 2. Grid with Empty State Check */}
 			{articles.length > 0 ? (
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-4">
-					{articles.map((article) => (
-						<NewsCard key={article.title} article={article} />
+					{articles.map((article, index) => (
+						<NewsCard
+							index={index}
+							key={article.title}
+							article={article}
+						/>
 					))}
 				</div>
 			) : (

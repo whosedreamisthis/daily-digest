@@ -23,8 +23,12 @@ export default async function Home() {
 		<>
 			<HeroArticle article={featuredArticle} />
 			<div className="grid grid-cols-2 gap-3 mx-4 items-center justify-center">
-				{remainingArticles.map((article) => (
-					<NewsCard key={article.title} article={article} />
+				{remainingArticles.map((article, index) => (
+					<NewsCard
+						index={index}
+						key={article.title}
+						article={article}
+					/>
 				))}
 			</div>
 		</>

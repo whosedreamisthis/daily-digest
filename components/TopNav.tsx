@@ -16,7 +16,7 @@ export default function TopNav() {
 					<Link href="/">
 						<nav className="flex flex-row just-start items-center">
 							<Image
-								src="/icon-v2.png"
+								src="/images/icon-v2.png"
 								alt="Daily Digest Logo"
 								width={80}
 								height={80}
