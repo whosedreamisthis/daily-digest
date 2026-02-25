@@ -1,14 +1,21 @@
+'use client';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import SafeImage from './SafeImage';
+import { useNewsStore } from '@/stores/useNewsStore';
 
 export default function NewsCard({ article }: { article: any }) {
+	const setArticle = useNewsStore((state) => state.setArticle);
+
 	return (
 		<Link
 			href={`/article/${encodeURIComponent(article.title)}`}
 			className="block h-full"
+			onClick={() => {
+				setArticle(article);
+			}}
 		>
 			{/* 1. overflow-hidden is mandatory here to clip the image corners */}
 			<Card className="p-0 overflow-hidden border-none shadow-sm group flex flex-col h-full hover:shadow-md transition-shadow">
