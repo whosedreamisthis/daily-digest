@@ -31,7 +31,12 @@ export default function SearchBar() {
 				type="submit"
 				className="absolute top-1/2 -translate-y-1/2 left-3 "
 			>
-				<Search className=" text-gray-400  w-4 h-4 group-focus-within:text-red-600 transition-colors" />
+				<Search
+					className=" text-gray-400  w-4 h-4 group-focus-within:text-red-600 transition-colors"
+					aria-hidden="true"
+				/>
+				<span className="sr-only">Search stories</span>
+				{/* Text for SR */}
 			</button>
 
 			<Input

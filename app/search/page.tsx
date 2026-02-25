@@ -41,7 +41,7 @@ export default async function SearchPage({
 
 	return (
 		<main className="container mx-auto px-4 py-8">
-			<h1 className="text-2xl font-bold mb-6">
+			<h1 className="text-2xl font-bold mb-6" aria-live="polite">
 				Results for "{query}"
 				<span className="text-slate-400 ml-2 text-lg font-normal italic">
 					({totalResults} stories found{' '}
