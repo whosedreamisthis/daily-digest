@@ -15,7 +15,7 @@ export default function NewsCard({ article }: { article: any }) {
 		<Card className="relative p-0 overflow-hidden border-none shadow-sm group flex flex-col h-full hover:shadow-md transition-shadow">
 			<div className="relative aspect-video w-full">
 				<SafeImage
-					src={article.urlToImage || '/placeholder.jpg'}
+					src={article.urlToImage || '/images/placeholder-v2.jpg'}
 					alt={article.title} // Keep empty if the title describes the content sufficiently
 					fill
 					className="object-cover transition-transform duration-500 group-hover:scale-105"

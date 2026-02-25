@@ -105,7 +105,7 @@ export default function ArticlePage() {
 			{/* 2. Image Section - Contained correctly */}
 			<div className="relative w-full h-[300px] md:h-[500px] overflow-hidden rounded-2xl shadow-lg">
 				<Image
-					src={article.urlToImage || '/placeholder.jpg'}
+					src={article.urlToImage || '/images/placeholder-v2.jpg'}
 					alt={article.title}
 					fill
 					priority

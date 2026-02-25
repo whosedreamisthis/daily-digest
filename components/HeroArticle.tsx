@@ -21,7 +21,7 @@ export default function HeroArticle({ article }: Props) {
 			>
 				<section className="relative w-full h-[30vh] md:h-[600px] overflow-hidden mt-6">
 					<Image
-						src={article.urlToImage || '/placeholder.jpg'}
+						src={article.urlToImage || '/images/placeholder-v2.jpg'}
 						alt={article.title}
 						fill
 						priority
