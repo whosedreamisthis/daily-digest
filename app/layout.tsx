@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 	description: 'News Aggregator',
 	icons: {
 		// Adding ?v=1 forces the browser to re-download the file
-		icon: '/icon.png?v=1',
-		shortcut: '/icon.png?v=1',
-		apple: '/icon.png?v=1',
+		icon: '/images/icon-v2.png',
+		shortcut: '/images/icon-v2.png',
+		apple: '/images/icon-v2.png',
 	},
 };
 
