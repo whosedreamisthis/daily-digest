@@ -1,3 +1,4 @@
+// app/components/SafeImage.tsx
 'use client';
 
 import Image, { ImageProps } from 'next/image';
@@ -7,51 +8,59 @@ interface SafeImageProps extends Omit<ImageProps, 'src'> {
 	src: string | null | undefined;
 }
 
-const FALLBACK_IMAGE = '/images/placeholder-v2.jpg'; // Ensure this is in your /public folder
-
 export default function SafeImage({
 	src,
 	alt,
-	sizes,
+	priority,
 	...props
 }: SafeImageProps) {
-	const [imgSrc, setImgSrc] = useState<string>(FALLBACK_IMAGE);
+	const [imgSrc, setImgSrc] = useState<string>('');
 	const [isMounted, setIsMounted] = useState(false);
+	const FALLBACK = '/images/placeholder-v2.jpg';
 
 	useEffect(() => {
 		setIsMounted(true);
 
-		// 1. Immediate check for empty/null sources
-		if (!src || src === 'null' || src === '') {
-			setImgSrc(FALLBACK_IMAGE);
+		// If it's a priority image, we set the source immediately to hit that 2.5s LCP goal
+		if (priority) {
+			setImgSrc(src || FALLBACK);
 			return;
 		}
 
-		// 2. Client-side only validation (Safe to use 'new Image()' here)
+		// Otherwise, do the background ping for non-critical images
 		const imgCheck = new window.Image();
-		imgCheck.src = src;
+		imgCheck.src = src || '';
+		imgCheck.onload = () => setImgSrc(src || FALLBACK);
+		imgCheck.onerror = () => setImgSrc(FALLBACK);
+	}, [src, priority]);
 
-		imgCheck.onload = () => setImgSrc(src);
-		imgCheck.onerror = () => setImgSrc(FALLBACK_IMAGE);
-	}, [src]);
-
-	// 3. Avoid "Hydration Mismatch" by rendering a placeholder
-	// until the component has mounted on the client.
-	if (!isMounted) {
-		return <div className="w-full h-full bg-slate-200 animate-pulse" />;
+	// Server-side / Initial render:
+	// If priority is true, render the Image tag immediately so the browser sees it in the HTML
+	if (!isMounted && priority) {
+		return (
+			<Image
+				{...props}
+				src={src || FALLBACK}
+				alt={alt || ''}
+				priority // This is the magic prop for LCP
+				crossOrigin="anonymous"
+				referrerPolicy="no-referrer"
+			/>
+		);
 	}
+
+	if (!isMounted)
+		return <div className="w-full h-full bg-slate-200 animate-pulse" />;
 
 	return (
 		<Image
 			{...props}
-			src={imgSrc}
-			alt={alt || 'News image'}
-			sizes={
-				sizes ||
-				'(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-			}
-			// Final safety net for 404s that bypass the onload check
-			onError={() => setImgSrc(FALLBACK_IMAGE)}
+			src={imgSrc || FALLBACK}
+			alt={alt || ''}
+			priority={priority}
+			crossOrigin="anonymous"
+			referrerPolicy="no-referrer"
+			onError={() => setImgSrc(FALLBACK)}
 		/>
 	);
 }

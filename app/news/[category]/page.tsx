@@ -23,7 +23,7 @@ export async function generateMetadata({
 	};
 }
 
-const ARTICLES_PER_PAGE = 6;
+const ARTICLES_PER_PAGE = 12;
 
 // app/news/[category]/page.tsx
 export default async function CategoryPage({
