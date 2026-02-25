@@ -9,7 +9,12 @@ interface SafeImageProps extends Omit<ImageProps, 'src'> {
 
 const FALLBACK_IMAGE = '/images/placeholder-v2.jpg'; // Ensure this is in your /public folder
 
-export default function SafeImage({ src, alt, ...props }: SafeImageProps) {
+export default function SafeImage({
+	src,
+	alt,
+	sizes,
+	...props
+}: SafeImageProps) {
 	const [imgSrc, setImgSrc] = useState<string>(FALLBACK_IMAGE);
 	const [isMounted, setIsMounted] = useState(false);
 
@@ -41,6 +46,10 @@ export default function SafeImage({ src, alt, ...props }: SafeImageProps) {
 			{...props}
 			src={imgSrc}
 			alt={alt || 'News image'}
+			sizes={
+				sizes ||
+				'(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+			}
 			// Final safety net for 404s that bypass the onload check
 			onError={() => setImgSrc(FALLBACK_IMAGE)}
 		/>

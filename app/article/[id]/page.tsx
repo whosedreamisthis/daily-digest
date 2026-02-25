@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { summarizeArticle } from '@/lib/ai-actions';
 import ArticleSummary from '@/components/ArticleSummary';
 import BackButton from '@/components/BackButton';
+import SafeImage from '@/components/SafeImage';
 export default function ArticlePage() {
 	const article = useNewsStore((state) => state.article);
 	const summaries = useNewsStore((state) => state.summaries);
@@ -104,7 +105,7 @@ export default function ArticlePage() {
 
 			{/* 2. Image Section - Contained correctly */}
 			<div className="relative w-full h-[300px] md:h-[500px] overflow-hidden rounded-2xl shadow-lg">
-				<Image
+				<SafeImage
 					src={article.urlToImage || '/images/placeholder-v2.jpg'}
 					alt={article.title}
 					fill

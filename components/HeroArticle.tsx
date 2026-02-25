@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useNewsStore } from '@/stores/useNewsStore';
 import { generateSlug } from '@/lib/utils';
+import SafeImage from './SafeImage';
 
 interface Props {
 	article: Article;
@@ -20,7 +21,7 @@ export default function HeroArticle({ article }: Props) {
 				}}
 			>
 				<section className="relative w-full h-[30vh] md:h-[600px] overflow-hidden mt-6">
-					<Image
+					<SafeImage
 						src={article.urlToImage || '/images/placeholder-v2.jpg'}
 						alt={article.title}
 						fill
