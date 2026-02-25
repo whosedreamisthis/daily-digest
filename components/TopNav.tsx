@@ -13,11 +13,12 @@ export default function TopNav() {
 		<header className="sticky top-0 z-50 bg-white/95">
 			<div>
 				<div className="flex items-center justify-between gap-5">
-					<Link href="/">
+					<Link href="/" prefetch={true}>
 						<nav className="flex flex-row just-start items-center">
 							<Image
 								src="/images/icon-v2.png"
 								alt="Daily Digest Logo"
+								priority
 								width={80}
 								height={80}
 							/>
@@ -33,7 +34,9 @@ export default function TopNav() {
 						{(isHomepage || isSearchPage) && <SearchBar />}
 					</div>
 				</div>
-				{isHomepage && <CategoryBar />}
+				<div className="h-15 empty:h-0 transition-[height]">
+					{isHomepage && <CategoryBar />}
+				</div>
 			</div>
 		</header>
 	);

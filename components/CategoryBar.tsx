@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, memo } from 'react';
 import Link from 'next/link';
 
 const CATEGORIES = [
@@ -12,7 +12,7 @@ const CATEGORIES = [
 	'technology',
 ];
 
-export default function CategoryBar() {
+const CategoryBar = memo(function CategoryBar() {
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const [isDragging, setIsDragging] = useState(false);
 	const [startX, setStartX] = useState(0);
@@ -68,4 +68,5 @@ export default function CategoryBar() {
 			})}
 		</div>
 	);
-}
+});
+export default CategoryBar;
