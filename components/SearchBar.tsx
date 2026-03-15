@@ -3,11 +3,11 @@
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import { useNewsStore } from '@/stores/useNewsStore';
-import { useRouter, usePathname } from 'next/navigation'; // 1. Import usePathname
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function SearchBar() {
 	const router = useRouter();
-	const pathname = usePathname(); // 2. Initialize the hook
+	const pathname = usePathname();
 	const query = useNewsStore((state) => state.query);
 	const setQuery = useNewsStore((state) => state.setQuery);
 
@@ -17,7 +17,6 @@ export default function SearchBar() {
 
 		const url = `/search?q=${encodeURIComponent(query)}`;
 
-		// 3. Use the hook-provided pathname instead of window
 		if (pathname === '/search') {
 			router.replace(url);
 		} else {
@@ -36,7 +35,6 @@ export default function SearchBar() {
 					aria-hidden="true"
 				/>
 				<span className="sr-only">Search stories</span>
-				{/* Text for SR */}
 			</button>
 
 			<Input
@@ -45,7 +43,7 @@ export default function SearchBar() {
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}
 			/>
-			{/* Optional: Add a button if you want a visible click target */}
+
 			<button type="submit" className="hidden">
 				Search
 			</button>
