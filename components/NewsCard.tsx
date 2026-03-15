@@ -23,15 +23,15 @@ export default function NewsCard({
 			<div className="relative aspect-video w-full">
 				<SafeImage
 					src={article.urlToImage || '/images/placeholder-v2.jpg'}
-					alt={article.title} // Keep empty if the title describes the content sufficiently
+					alt=""
 					fill
-					priority={index < 4}
+					preload={index < 4}
 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 					className="object-cover transition-transform duration-500 group-hover:scale-105"
 				/>
 			</div>
 
-			<div className="p-4 space-y-3 flex flex-col flex-grow">
+			<div className="p-4 space-y-3 flex flex-col grow">
 				<div className="flex items-center gap-2">
 					<Badge
 						variant="secondary"
