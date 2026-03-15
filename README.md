@@ -135,6 +135,33 @@ const handleSearch = (e: React.FormEvent) => {
 };
 ```
 
+## 🧪 Testing Suite
+
+Daily Digest implements a rigorous testing strategy focusing on component reliability, state synchronization, and performance optimizations.
+
+### 1. Component & Integration Testing
+We use **Vitest** to ensure UI components behave correctly across different states. Key test areas include:
+- **Navigation Logic**: Verifying that `BackButton` and `NewsCard` trigger the correct router events.
+- **Store Synchronization**: Ensuring that clicking a headline correctly populates the Zustand store.
+- **State Persistence**: Testing that search queries and article data persist correctly through the middleware.
+
+### 2. High-Performance Image Mocking
+To prevent Next.js's Image Optimization from breaking unit tests, we use a custom mocking strategy for `next/image`. This allows us to verify that critical performance props like `priority` and `fill` are passed correctly without the overhead of the Next.js loader.
+
+```typescript
+vi.mock('next/image', () => ({
+  __esModule: true,
+  default: ({ src, alt, priority, fill, ...props }: any) => (
+    <img
+      src={src}
+      alt={alt}
+      data-priority={priority ? 'true' : 'false'}
+      data-fill={fill ? 'true' : 'false'}
+      {...props}
+    />
+  ),
+}));
+
 ## 📦 Installation & Setup
 
 Follow these steps to get your local development environment running.
