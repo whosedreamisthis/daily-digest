@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import CategoryBar from '@/components/CategoryBar';
 import HeroArticle from '@/components/HeroArticle';
 import { getHeadlines } from './actions';
 import { mockArticles } from '@/data/mockNews';
