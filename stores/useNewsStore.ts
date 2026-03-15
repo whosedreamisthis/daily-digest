@@ -16,6 +16,8 @@ interface NewsState {
 	addSummary: (title: string, summary: string) => void;
 	customCrumbs: BreadCrumb[];
 	setCustomCrumbs: (crumbs: BreadCrumb[]) => void;
+	tickerArticles: Article[];
+	setTickerArticles: (articles: Article[]) => void;
 }
 
 // Add <NewsState> right here in the function parameters
@@ -33,6 +35,8 @@ export const useNewsStore = create<NewsState>()(
 				})),
 			customCrumbs: [],
 			setCustomCrumbs: (crumbs) => set({ customCrumbs: crumbs }),
+			tickerArticles: [], // Initialize empty
+			setTickerArticles: (articles) => set({ tickerArticles: articles }),
 		}),
 		{
 			name: 'news-storage',

@@ -3,6 +3,7 @@ import { getHeadlines } from './actions';
 import { mockArticles } from '@/data/mockNews';
 import NewsCard from '@/components/NewsCard';
 import { Article } from '@/lib/types';
+import TickerSync from '@/components/TickerSync';
 
 export default async function Home() {
 	let articles: Article[];
@@ -19,6 +20,7 @@ export default async function Home() {
 
 	return (
 		<>
+			<TickerSync articles={articles} />
 			<HeroArticle article={featuredArticle} />
 			<div className="grid grid-cols-2 gap-3 mx-4 items-center justify-center">
 				{remainingArticles.map((article, index) => (

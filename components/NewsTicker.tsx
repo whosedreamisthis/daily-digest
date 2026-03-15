@@ -1,15 +1,26 @@
 'use client';
 
 import { mockArticles } from '@/data/mockNews';
+import { Article } from '@/lib/types';
 import Link from 'next/link';
 import { useNewsStore } from '@/stores/useNewsStore';
 import { generateSlug } from '@/lib/utils';
 
-export default function NewsTicker() {
+interface NewsTickerProps {
+	articles?: Article[];
+}
+
+export default function NewsTicker({ articles }: NewsTickerProps) {
 	const setArticle = useNewsStore((state) => state.setArticle);
 
+	const tickerArticles = useNewsStore((state) => state.tickerArticles);
+
+	// Fallback to mocks if the store hasn't been populated yet
+	const displayArticles =
+		tickerArticles.length > 0 ? tickerArticles : mockArticles;
+
 	// Double the articles for the seamless loop
-	const tickerItems = [...mockArticles, ...mockArticles];
+	const tickerItems = [...displayArticles, ...displayArticles];
 
 	return (
 		<div className="fixed z-50 bottom-0 left-0 w-full bg-slate-900 text-white h-10 flex items-center overflow-hidden border-t border-slate-800">
