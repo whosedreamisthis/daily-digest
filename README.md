@@ -46,7 +46,7 @@ Type any keyword into the search bar. The app will update the URL in real-time.
 
 The project follows the Next.js 15 App Router conventions. Below are the key components that power the Daily Digest experience:
 
-````text
+```text
 ├── components/
 │   ├── ArticleSummary.tsx  # Renders AI-generated summaries using react-markdown
 │   ├── BackButton.tsx      # Client-side navigation with hover animations
@@ -67,13 +67,15 @@ The project follows the Next.js 15 App Router conventions. Below are the key com
 └── lib/
     ├── utils.ts            # Slug generation and Tailwind formatting helpers
     └── types.ts            # TypeScript interfaces for NewsAPI responses
+```
 
 ## 🧩 Component Highlights
 
 ### 1. Drag-to-Scroll Category Bar (`CategoryBar.tsx`)
+
 To provide a fluid, mobile-like experience on desktop, the `CategoryBar` uses a custom `requestAnimationFrame` implementation. This decouples the event frequency from DOM updates, allowing users to click and drag through news categories smoothly.
 
-```typescript
+````typescript
 const handleMouseMove = (e: React.MouseEvent) => {
   if (!isDragging || !scrollRef.current) return;
   e.preventDefault();
@@ -107,7 +109,7 @@ return (
 		{...props}
 	/>
 );
-```
+````
 
 ### 2. Search History & State Management
 
@@ -140,15 +142,18 @@ const handleSearch = (e: React.FormEvent) => {
 Daily Digest implements a rigorous testing strategy focusing on component reliability, state synchronization, and performance optimizations.
 
 ### 1. Component & Integration Testing
+
 We use **Vitest** to ensure UI components behave correctly across different states. Key test areas include:
-- **Navigation Logic**: Verifying that `BackButton` and `NewsCard` trigger the correct router events.
-- **Store Synchronization**: Ensuring that clicking a headline correctly populates the Zustand store.
-- **State Persistence**: Testing that search queries and article data persist correctly through the middleware.
+
+-   **Navigation Logic**: Verifying that `BackButton` and `NewsCard` trigger the correct router events.
+-   **Store Synchronization**: Ensuring that clicking a headline correctly populates the Zustand store.
+-   **State Persistence**: Testing that search queries and article data persist correctly through the middleware.
 
 ### 2. High-Performance Image Mocking
+
 To prevent Next.js's Image Optimization from breaking unit tests, we use a custom mocking strategy for `next/image`. This allows us to verify that critical performance props like `priority` and `fill` are passed correctly without the overhead of the Next.js loader.
 
-```typescript
+````typescript
 vi.mock('next/image', () => ({
   __esModule: true,
   default: ({ src, alt, priority, fill, ...props }: any) => (
@@ -173,7 +178,7 @@ Start by cloning the project to your local machine:
 ```bash
 git clone [https://github.com/your-username/daily-digest.git](https://github.com/your-username/daily-digest.git)
 cd daily-digest
-```
+````
 
 ### 2. Install Dependencies
 
@@ -230,4 +235,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 _Built with ❤️ for a faster, cleaner news experience._
-````
+
+```
+
+```
