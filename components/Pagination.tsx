@@ -24,6 +24,7 @@ export default function Pagination({
 		<div className="flex justify-center items-center gap-4 mt-12">
 			<Link
 				href={getPageLink(currentPage - 1)}
+				aria-label="Previous Page"
 				className={`p-2 rounded-full border ${
 					currentPage <= 1
 						? 'pointer-events-none opacity-30'
@@ -39,6 +40,7 @@ export default function Pagination({
 
 			<Link
 				href={getPageLink(currentPage + 1)}
+				aria-label="Next Page"
 				className={`p-2 rounded-full border ${
 					currentPage >= totalPages
 						? 'pointer-events-none opacity-30'
