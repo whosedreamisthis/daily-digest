@@ -43,7 +43,7 @@ const CategoryBar = memo(function CategoryBar() {
 	};
 
 	return (
-		<div
+		<nav
 			ref={scrollRef}
 			onMouseDown={handleMouseDown}
 			onMouseLeave={handleMouseLeaveOrUp}
@@ -66,7 +66,7 @@ const CategoryBar = memo(function CategoryBar() {
 					</Link>
 				);
 			})}
-		</div>
+		</nav>
 	);
 });
 export default CategoryBar;
