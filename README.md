@@ -153,19 +153,36 @@ We use **Vitest** to ensure UI components behave correctly across different stat
 
 To prevent Next.js's Image Optimization from breaking unit tests, we use a custom mocking strategy for `next/image`. This allows us to verify that critical performance props like `priority` and `fill` are passed correctly without the overhead of the Next.js loader.
 
-````typescript
+```typescript
 vi.mock('next/image', () => ({
-  __esModule: true,
-  default: ({ src, alt, priority, fill, ...props }: any) => (
-    <img
-      src={src}
-      alt={alt}
-      data-priority={priority ? 'true' : 'false'}
-      data-fill={fill ? 'true' : 'false'}
-      {...props}
-    />
-  ),
+	__esModule: true,
+	default: ({ src, alt, priority, fill, ...props }: any) => (
+		<img
+			src={src}
+			alt={alt}
+			data-priority={priority ? 'true' : 'false'}
+			data-fill={fill ? 'true' : 'false'}
+			{...props}
+		/>
+	),
 }));
+```
+
+## 🎭 End-to-End Testing (Playwright)
+
+We use Playwright to simulate real user behavior across multiple browsers (Chrome, Firefox, Safari).
+
+-   **Navigation Flows**: Testing the hand-off between Search results and Article details.
+-   **Responsive Layouts**: Verifying that the `NewsTicker` and `CategoryBar` remain functional on mobile viewports.
+-   **URL State**: Ensuring `URLSearchParams` are correctly updated and handled by the server.
+
+```bash
+# Run E2E tests
+npx playwright test
+
+# Open Playwright UI (Trace Viewer)
+npx playwright test --ui
+```
 
 ## 📦 Installation & Setup
 
@@ -178,7 +195,7 @@ Start by cloning the project to your local machine:
 ```bash
 git clone [https://github.com/your-username/daily-digest.git](https://github.com/your-username/daily-digest.git)
 cd daily-digest
-````
+```
 
 ### 2. Install Dependencies
 
